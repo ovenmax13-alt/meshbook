@@ -1,5 +1,5 @@
 name: Build APK
-on: [push]
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -9,7 +9,6 @@ jobs:
         with:
           node-version: '20'
       - run: npm install
-      - run: npx cap init "MeshBook" "com.meshbook.app" --web-dir=www
       - run: npx cap add android
       - run: npx cap sync android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
